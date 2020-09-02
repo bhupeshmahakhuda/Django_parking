@@ -1,0 +1,89 @@
+{% block content %}
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+       {% include 'sidebar.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+             {% include 'header.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Vehicle</strong>  Details
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <p style="font-size:16px; color:red" align="center">
+                                        <table border="1" class="table table-bordered mg-b-0">
+                                            <tr>
+                                                <th>Parking Number</th>
+                                                <td>{{vehicle.parkingNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Vehicle Category</th>
+                                                <td>{{vehicle.category}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Vehicle Company Name</th>
+                                                <td>{{vehicle.vehicleComapny}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Registration Number</th>
+                                                <td>{{vehicle.regNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Owner Name</th>
+                                                <td>{{vehicle.ownerName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Owner Contact Number</th>
+                                                <td>{{vehicle.ownerContact}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>In Time</th>
+                                                <td>{{vehicle.inTime}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>OutTime</th>
+                                                <td>{{vehicle.outTime}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Remark</th>
+                                                <td>{{vehicle.remark}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Status</th>
+                                                <td>{{vehicle.status}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Parking Fee</th>
+                                                <td>{{vehicle.parkingCharge}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

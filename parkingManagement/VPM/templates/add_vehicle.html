@@ -1,0 +1,134 @@
+{% block content %}
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+         {% include 'sidebar.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {% include 'header.html' %}
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Add</strong> Vehicle
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                                             {% csrf_token %}
+                                            <p style="font-size:16px; color:red" align="center">
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">Vehicle Category</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select  name="category"  class="form-control">
+                                                    <option value="">---Select Vehicle Category---</option>
+                                                        {% for i in category %}
+                                                            <option value="{{i}}">{{i}}</option>
+                                                        {% endfor %}
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">Vehicle Company</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="vehiclecompany" placeholder="Vehicle Company" class="form-control" required="">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">Registration Number</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text"  name="regno" placeholder="Registration Number" class="form-control"  required="">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">Owner Name</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text"  name="ownername" placeholder="Owner Name" class="form-control"  required="">
+
+                                                </div>
+                                            </div>
+                                             <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">Owner Contact Number</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text"  name="ownercontact" placeholder="Contact Number" maxlength="10" class="form-control" required="">
+
+                                                </div>
+                                             </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">Parking Date</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="date"  name="pdate"  class="form-control" required="">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label  class=" form-control-label">In Time</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="time"  name="intime" placeholder="In Time" class="form-control" required="">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                  <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Submit</button></p>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!--<script>-->
+    <!--console.log('hello world');-->
+<!--</script>-->
+{% ifequal error 'no' %}
+<script>
+    console.log('hii hello');
+    alert('vehicle added successfully');
+    window.location=("{% url 'manage_invehicle' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error 'yes' %}
+<script>
+    alert('Something Went Wrong.Please try again!!');
+</script>
+{% endifequal %}
+
+{% endblock %}

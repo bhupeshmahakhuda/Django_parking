@@ -1,0 +1,108 @@
+{% block content %}
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+       {% include 'sidebar.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+             {% include 'header.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Vehicle</strong>  Details
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <p style="font-size:16px; color:red" align="center">
+                                        <table border="1" class="table table-bordered mg-b-0">
+                                            <tr>
+                                                <th>Parking Number</th>
+                                                <td>{{ vehicle.parkingNumber }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Vehicle Category</th>
+                                                <td>{{ vehicle.category }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Vehicle Company Name</th>
+                                                <td>{{ vehicle.vehicleComapny }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Registration Number</th>
+                                                <td>{{ vehicle.regNo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Owner Name</th>
+                                                <td>{{ vehicle.ownerName }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Owner Contact Number</th>
+                                                <td>{{ vehicle.ownerContact }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>In Time</th>
+                                                <td>{{ vehicle.inTime }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Status</th>
+                                                <td>{{ vehicle.status }}</td>
+                                            </tr>
+
+
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <tr>
+                                                    <th>Outing Remark :</th>
+                                                    <td><textarea name="remark" placeholder="" rows="12" cols="14" class="form-control wd-450" required="true"></textarea></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Parking Charge :</th>
+                                                    <td><input type = "text" name="parkingcharge"  class="form-control wd-450" required="true"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Out Time :</th>
+                                                    <td><input type = "time" name="outtime"  class="form-control wd-450" required="true"></td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td colspan="2"><button type="submit" name="submit" class="btn btn-primary btn-sm">Update</button></td>
+                                                </tr>
+                                            </form>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% ifequal error 'no' %}
+<script>
+    alert('Details add succesfully!!!!');
+    window.location=('{% url 'manage_outvehicle' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error 'yes' %}
+<script>
+    alert("Something went wrong,Please try again!!");
+</script>
+{% endifequal %}
+
+{% endblock %}
